@@ -6,10 +6,10 @@ const client = createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "",
 });
 
-client.createEntry = async (contentType: string, fields: any) => {
-  return client.getSpace().then((space) => {
-    return space.createEntry(contentType, { fields });
-  });
-};
+// client.createEntry = async (contentType: string, fields: any) => {
+//   return client.getSpace().then((space) => {
+//     return space.createEntry(contentType, { fields });
+//   });
+// };
 
 export default client;

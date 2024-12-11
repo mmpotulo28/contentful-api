@@ -21,7 +21,7 @@ const Page = ({ page }: PageProps) => {
     <div>
       <h1>{page.fields.title}</h1>
       <Image
-        src={page.fields.topNavImage.fields.file.url}
+        src={`https:${page.fields.topNavImage.fields.file.url}`}
         alt={page.fields.title}
         width={500} // replace with actual width
         height={300} // replace with actual height

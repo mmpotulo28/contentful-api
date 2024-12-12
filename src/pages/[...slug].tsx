@@ -1,6 +1,6 @@
 // pages/[...slug].tsx
 import { GetStaticPaths, GetStaticProps } from "next";
-import client from "../lib/contentful";
+import { client } from "../lib/contentful";
 import Image from "next/image";
 
 interface PageProps {
@@ -43,7 +43,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths.map((path) => path.params.slug?.join("/"))
   );
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -63,6 +63,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       page: res.items[0],
     },
+    revalidate: 1,
   };
 };
 

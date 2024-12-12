@@ -1,15 +1,13 @@
 // lib/contentful.ts
-import { createClient } from "contentful";
+import { createClient } from "contentful-management";
+import { createClient as createDeliveryClient } from "contentful";
 
-const client = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID || "",
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "",
+export const client = createDeliveryClient({
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || "",
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN || "", // Ensure this is set
+  environment: process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT || "", // Ensure this is used
 });
 
-// client.createEntry = async (contentType: string, fields: any) => {
-//   return client.getSpace().then((space) => {
-//     return space.createEntry(contentType, { fields });
-//   });
-// };
-
-export default client;
+export const managementClient = createClient({
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_MANAGEMENT_TOKEN || "", // Ensure this is set
+});
